@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Express | Account</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">Food Express</div>
+      <div class="nav-group">
+        <nav class="main-nav">
+          <a href="home.html">Home</a>
+          <a href="home.html#menu">Menu</a>
+          <a href="cart.html">Cart</a>
+          <a href="account.html">Account</a>
+        </nav>
+        <div class="user-info" id="userInfo">
+          <span class="user-greeting">Hello, Guest</span>
+          <a href="login.html" class="nav-login">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="page-content account">
+    <section class="account-section">
+      <div class="section-header">
+        <span class="eyebrow">Your account</span>
+        <h2>Profile and preferences</h2>
+      </div>
+      <div class="account-card">
+        <div class="profile-grid">
+          <div><strong>Name</strong><p id="profileName">Loading...</p></div>
+          <div><strong>Email</strong><p id="profileEmail">Loading...</p></div>
+        </div>
+        
+        <button id="logoutButton" class="btn btn-secondary">Logout</button>
+        <p id="accountMessage" class="status-message">Your account settings are saved automatically.</p>
+      </div>
+    </section>
+
+    <section class="settings-section">
+      <div class="section-header">
+        <span class="eyebrow">Settings</span>
+        <h2>Manage your preferences</h2>
+      </div>
+      <div class="account-card">
+        <div class="settings-content">
+          
+          <!-- Change Password -->
+          <div class="settings-item">
+            <h3>🔒 Change Password</h3>
+            <p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;">Choose a verification method to change your password.</p>
+            
+            <!-- Step 0: Choose Verification Method -->
+            <div id="passwordStep0" class="settings-form">
+              <p style="color: #2f2f2f; font-weight: 600; margin-bottom: 12px;">Select how you want to verify your identity:</p>
+              <div class="form-group" style="margin-bottom: 12px;">
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 10px; border: 2px solid #ffe1ce; border-radius: 8px; transition: all 0.2s;">
+                  <input type="radio" name="passwordMethod" value="oldpassword" onchange="selectPasswordMethod('oldpassword')" checked>
+                  <div>
+                    <strong>Current Password</strong>
+                    <p style="margin: 4px 0 0; font-size: 0.85rem; color: #a0a0a0;">Enter your current password to verify</p>
+                  </div>
+                </label>
+              </div>
+              <div class="form-group">
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 10px; border: 2px solid #ffe1ce; border-radius: 8px; transition: all 0.2s;">
+                  <input type="radio" name="passwordMethod" value="otp" onchange="selectPasswordMethod('otp')">
+                  <div>
+                    <strong>📧 Email OTP</strong>
+                    <p style="margin: 4px 0 0; font-size: 0.85rem; color: #a0a0a0;">Send OTP to your registered email</p>
+                  </div>
+                </label>
+              </div>
+              <button type="button" class="btn btn-primary" onclick="proceedWithPasswordMethod()" style="margin-top: 16px;">Continue</button>
+              <p id="methodMessage" class="status-message"></p>
+            </div>
+
+            <!-- Step 1A: Current Password Verification -->
+            <div id="passwordStep1A" class="settings-form" style="display: none;">
+              <p style="color: #2f2f2f; font-weight: 600; margin-bottom: 12px;">Verify your current password:</p>
+              <div class="form-group">
+                <label>Current Password</label>
+                <input type="password" id="currentPassword" placeholder="Enter your current password">
+              </div>
+              <button type="button" class="btn btn-secondary" onclick="backToMethodSelection()">Back</button>
+              <button type="button" class="btn btn-primary" onclick="verifyCurrentPassword()" style="margin-left: 8px;">Verify & Continue</button>
+              <p id="passwordMessage" class="status-message"></p>
+            </div>
+
+            <!-- Step 1B: Send OTP -->
+            <div id="passwordStep1B" class="settings-form" style="display: none;">
+              <p style="color: #2f2f2f; font-weight: 600; margin-bottom: 12px;">We'll send an OTP to your registered email:</p>
+              <button type="button" class="btn btn-secondary" onclick="backToMethodSelection()">Back</button>
+              <button type="button" class="btn btn-primary" onclick="sendPasswordOtp()" style="margin-left: 8px;">Send OTP</button>
+              <p id="otpSendMessage" class="status-message"></p>
+            </div>
+
+            <!-- Step 2: Verify OTP -->
+            <div id="passwordStep2" class="settings-form" style="display: none;">
+              <p style="color: #27ae60; font-size: 0.9rem; margin-bottom: 15px;">✅ OTP sent to your email. Enter it below:</p>
+              <div class="form-group">
+                <label>OTP Code</label>
+                <input type="text" id="passwordOtp" placeholder="Enter 6-digit OTP" maxlength="6">
+              </div>
+              <button type="button" class="btn btn-secondary" onclick="backToMethodSelection()">Back</button>
+              <button type="button" class="btn btn-secondary" onclick="verifyPasswordOtp()" style="margin-left: 8px;">Verify OTP</button>
+              <button type="button" class="btn btn-secondary" onclick="resendPasswordOtp()" style="margin-left: 8px;">Resend OTP</button>
+              <p id="otpMessage" class="status-message"></p>
+            </div>
+
+            <!-- Step 3: New Password -->
+            <div id="passwordStep3" style="display: none;">
+              <form id="passwordForm" class="settings-form">
+                <p style="color: #27ae60; font-size: 0.9rem; margin-bottom: 15px;">✅ Identity verified. Now set your new password:</p>
+                <div class="form-group">
+                  <label>New Password</label>
+                  <input type="password" id="newPassword" placeholder="Enter new password (min 6 characters)" required>
+                </div>
+                <div class="form-group">
+                  <label>Confirm Password</label>
+                  <input type="password" id="confirmPassword" placeholder="Confirm new password" required>
+                </div>
+                <button type="button" class="btn btn-secondary" onclick="backToMethodSelection()">Back</button>
+                <button type="submit" class="btn btn-primary" style="margin-left: 8px;">Update Password</button>
+                <p id="newPasswordMessage" class="status-message"></p>
+              </form>
+            </div>
+          </div>
+
+          <!-- Delivery Address -->
+          <div class="settings-item">
+            <h3>📍 Delivery Address</h3>
+            <form id="addressForm" class="settings-form">
+              <div class="form-group">
+                <label>Address</label>
+                <textarea id="deliveryAddress" placeholder="Enter your delivery address" rows="3" required></textarea>
+              </div>
+              <div class="form-group">
+                <label>Location/City</label>
+                <input type="text" id="deliveryLocation" placeholder="Enter your city" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Save Address</button>
+              <p id="addressMessage" class="status-message"></p>
+            </form>
+          </div>
+
+          <!-- Order Updates -->
+          <div class="settings-item">
+            <h3>📬 Notifications</h3>
+            <div class="settings-toggle">
+              <label class="toggle-label">
+                <input type="checkbox" id="orderUpdates">
+                <span class="toggle-switch"></span>
+                <span class="toggle-text">Receive order updates and notifications</span>
+              </label>
+              <p id="updateMessage" class="status-message"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="orders-section">
+      <div class="section-header">
+        <span class="eyebrow">Order History</span>
+        <h2>Your past orders</h2>
+      </div>
+      <div class="orders-card">
+        <div class="orders-table-wrapper">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Total Bill</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <tr>
+                <td colspan="5" class="status-message">Loading orders...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="ordersMessage" class="status-message"></p>
+      </div>
+    </section>
+
+    <!-- Order Details Modal -->
+    <div id="orderModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div class="modal-header">
+          <h2>Order Details</h2>
+        </div>
+        <div class="modal-body">
+          <div class="order-detail-row">
+            <strong>Order ID:</strong>
+            <span id="modalOrderId"></span>
+          </div>
+          <div class="order-detail-row">
+            <strong>Date:</strong>
+            <span id="modalOrderDate"></span>
+          </div>
+          <div class="order-detail-row">
+            <strong>Status:</strong>
+            <span id="modalOrderStatus" class="status-badge"></span>
+          </div>
+          <div class="order-detail-row">
+            <strong>Payment Method:</strong>
+            <span id="modalPaymentMethod"></span>
+          </div>
+          <div class="order-detail-row">
+            <strong>Delivery Address:</strong>
+            <span id="modalAddress"></span>
+          </div>
+
+          <div style="margin-top: 20px; border-top: 1px solid #eee7e0; padding-top: 20px;">
+            <h3 style="margin-bottom: 15px;">Food Items</h3>
+            <div id="modalFoodItems" class="food-items-list"></div>
+          </div>
+
+          <div style="margin-top: 20px; border-top: 1px solid #eee7e0; padding-top: 20px;">
+            <div class="order-total-row">
+              <strong>Total Price:</strong>
+              <span id="modalTotalPrice" class="price-value"></span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary modal-close-btn">Close</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section id="contact" class="contact-section">
+    <div class="container section-header">
+      <span class="eyebrow">Get in Touch</span>
+      <h2>Connect with us</h2>
+    </div>
+    
+    <div class="container contact-content">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <h4>Call Us</h4>
+          <p>+91 9876543210</p>
+          <p class="contact-time">Mon - Sun, 9 AM - 10 PM</p>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <h4>Email Us</h4>
+          <p>support@foodexpress.com</p>
+          <p class="contact-time">We'll respond within 24 hours</p>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <h4>Visit Us</h4>
+          <p>123 Food Street, Bangalore</p>
+          <p class="contact-time">Karnataka 560001, India</p>
+        </div>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <h3>Send us a Message</h3>
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <input type="text" id="contactName" placeholder="Your Name" required>
+          </div>
+          
+          <div class="form-group">
+            <input type="email" id="contactEmail" placeholder="Your Email" required>
+          </div>
+          
+          <div class="form-group">
+            <input type="tel" id="contactPhone" placeholder="Your Phone (Optional)">
+          </div>
+          
+          <div class="form-group">
+            <textarea id="contactMessageText" placeholder="Your Message..." rows="4" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary contact-submit-btn">Send Message</button>
+          <p id="contactMessageOutput" class="contact-message"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>Food Express — Manage your profile and theme.</p>
+  </footer>
+  <script src="js/common.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>

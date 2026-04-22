@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Express | Register</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">Food Express</div>
+            <div class="nav-group">
+                <nav class="main-nav">
+                    <a href="home.html">Home</a>
+                    <a href="home.html#menu">Menu</a>
+                    <a href="cart.html">Cart</a>
+                    <a href="account.html">Account</a>
+                </nav>
+                <div class="user-info" id="userInfo">
+                    <span class="user-greeting">Hello, Guest</span>
+                    <a href="login.html" class="nav-login">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="login-page">
+        <section class="login-card" id="register-form">
+            <div class="login-intro">
+                <span class="eyebrow">Create Account</span>
+                <h1>Register with OTP and password</h1>
+                <p>Enter your details below. We'll send a one-time code to your email to verify your account.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="reg-username">Username</label>
+                <input type="text" id="reg-username" placeholder="Choose a username">
+            </div>
+            <div class="form-group">
+                <label for="reg-email">Email Address</label>
+                <input type="email" id="reg-email" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" placeholder="Create a strong password">
+            </div>
+            <div class="form-group otp-row">
+                <div class="otp-field">
+                    <label for="reg-otp">OTP Code</label>
+                    <input type="text" id="reg-otp" placeholder="Enter OTP" maxlength="6">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="sendRegisterOtp()">Send OTP</button>
+            </div>
+            <button type="button" class="btn btn-secondary" id="registerButton" onclick="verifyRegisterOtp()">Verify & Create Account</button>
+            <p class="status-message" id="regOtpMessage">Please enter your details to receive OTP.</p>
+            <p class="status-message" id="regLocationMessage">Allow location access so we can show nearby restaurants after registration.</p>
+            
+            <div style="margin-top: 20px; text-align: center; border-top: 1px solid #ddd; padding-top: 15px;">
+                <p style="color: #666; font-size: 14px;">Already have an account? <a href="login.html" style="color: #667eea; text-decoration: none; font-weight: bold;">Login here</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Food Express — Example full-stack food delivery app.</p>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

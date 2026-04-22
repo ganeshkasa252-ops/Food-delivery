@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Express | Payment Confirmed</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .success-page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 200px);
+      padding: 20px;
+    }
+
+    .success-card {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .success-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 24px;
+      background: #27ae60;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+    }
+
+    .success-card h1 {
+      color: #2f2f2f;
+      margin: 0 0 12px;
+      font-size: 28px;
+    }
+
+    .success-card p {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 0 0 24px;
+    }
+
+    .payment-method {
+      background: #f5f5f5;
+      border-left: 4px solid #ff6a00;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: left;
+    }
+
+    .payment-method strong {
+      display: block;
+      color: #2f2f2f;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .payment-method span {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .order-details-box {
+      background: #fffaf0;
+      border: 1px solid #ffe1ce;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 20px 0;
+      text-align: left;
+    }
+
+    .order-detail-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .order-detail-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .order-detail-row label {
+      color: #666;
+      font-weight: 500;
+    }
+
+    .order-detail-row strong {
+      color: #2f2f2f;
+    }
+
+    .info-text {
+      background: #e8f5e9;
+      border-left: 4px solid #27ae60;
+      padding: 12px;
+      border-radius: 4px;
+      margin: 20px 0;
+      color: #27ae60;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .buttons-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn-primary {
+      flex: 1;
+      padding: 12px 20px;
+      background: #ff6a00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-primary:hover {
+      background: #e55a00;
+    }
+
+    .btn-secondary {
+      flex: 1;
+      padding: 12px 20px;
+      background: white;
+      color: #ff6a00;
+      border: 2px solid #ff6a00;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-secondary:hover {
+      background: #fff8f0;
+    }
+
+    @media (max-width: 600px) {
+      .success-card {
+        padding: 24px;
+      }
+
+      .buttons-group {
+        flex-direction: column;
+      }
+
+      .success-card h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">Food Express</div>
+      <div class="nav-group">
+        <nav class="main-nav">
+          <a href="home.html">Home</a>
+          <a href="home.html#menu">Menu</a>
+          <a href="cart.html">Cart</a>
+          <a href="account.html">Account</a>
+        </nav>
+        <div class="user-info" id="userInfo">
+          <span class="user-greeting">Hello, Guest</span>
+          <a href="login.html" class="nav-login">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content success-page">
+    <div class="success-card">
+      <div class="success-icon">✓</div>
+      
+      <h1>Payment Confirmed!</h1>
+      <p>Your order has been confirmed for <strong>Cash on Delivery</strong></p>
+
+      <div class="payment-method">
+        <strong>💰 Payment Method</strong>
+        <span>Cash on Delivery - Pay when your order arrives</span>
+      </div>
+
+      <div class="order-details-box">
+        <div class="order-detail-row">
+          <label>Order ID</label>
+          <strong id="displayOrderId">-</strong>
+        </div>
+        <div class="order-detail-row">
+          <label>Total Amount</label>
+          <strong id="displayTotal">₹0</strong>
+        </div>
+        <div class="order-detail-row">
+          <label>Delivery Address</label>
+          <strong id="displayAddress" style="text-align: right;">-</strong>
+        </div>
+      </div>
+
+      <div class="info-text">
+        <strong>ℹ️ Important:</strong> Keep your cash ready. Our delivery partner will collect the payment at your door.
+      </div>
+
+      <p style="color: #666; font-size: 14px; margin: 20px 0 0;">
+        You will receive order updates via email. You can also track your order in real-time.
+      </p>
+
+      <div class="buttons-group">
+        <button class="btn-secondary" onclick="goToHome()">Continue Shopping</button>
+        <button class="btn-primary" onclick="trackOrder()">Track Order</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Food Express — Your order is on its way!</p>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/header.js"></script>
+  <script>
+    function displaySuccessDetails() {
+      const orderData = JSON.parse(sessionStorage.getItem('codOrderData') || 'null');
+      
+      if (orderData) {
+        document.getElementById('displayOrderId').textContent = orderData.orderId || '-';
+        document.getElementById('displayTotal').textContent = `₹${orderData.total || 0}`;
+        document.getElementById('displayAddress').textContent = orderData.address || '-';
+      }
+    }
+
+    function trackOrder() {
+      const orderData = JSON.parse(sessionStorage.getItem('codOrderData') || 'null');
+      if (orderData && orderData.orderId) {
+        window.location.href = `order-tracking.html?orderId=${orderData.orderId}`;
+      }
+    }
+
+    function goToHome() {
+      window.location.href = 'home.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!requireLogin()) {
+        window.location.href = 'login.html';
+        return;
+      }
+      displaySuccessDetails();
+    });
+  </script>
+</body>
+</html>

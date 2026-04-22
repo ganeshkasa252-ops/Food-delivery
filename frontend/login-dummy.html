@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Express | Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">Food Express</div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="index.html#menu">Menu</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="account.html">Account</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="login-page">
+        <section class="login-card" id="login-form">
+            <div class="login-intro">
+                <span class="eyebrow">Secure Login</span>
+                <h1>Login with OTP and password</h1>
+                <p>Enter your username, email address, and password. We send a one-time code to your email and redirect you to the homepage on success.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email address">
+            </div>
+            <div class="form-group otp-row login-otp-row">
+                <div class="otp-field">
+                    <label for="otp">OTP Code</label>
+                    <input type="text" id="otp" placeholder="Enter OTP" maxlength="6">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="sendOtp()">Send OTP</button>
+            </div>
+            <button type="button" class="btn btn-secondary" id="loginButton" onclick="verifyOtp()">Verify & Login</button>
+            <p class="status-message" id="otpMessage">Please enter your details to receive OTP.</p>
+            <p class="status-message" id="locationMessage">Allow location access so we can show nearby restaurants after login.</p>
+            <p style="font-size: 12px; color: #666; margin-top: 10px;">💡 In test mode, check the server console for your OTP code.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Food Express login page.</p>
+            <a href="index.html">Back to Home</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

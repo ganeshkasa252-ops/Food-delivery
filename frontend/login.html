@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Express | Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">Food Express</div>
+            <div class="nav-group">
+                <nav class="main-nav">
+                    <a href="home.html">Home</a>
+                    <a href="home.html#menu">Menu</a>
+                    <a href="cart.html">Cart</a>
+                    <a href="account.html">Account</a>
+                </nav>
+                <div class="user-info" id="userInfo">
+                    <span class="user-greeting">Hello, Guest</span>
+                    <a href="login.html" class="nav-login">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="login-page">
+        <section class="login-card" id="login-form">
+            <div class="login-intro">
+                <span class="eyebrow">Secure Login</span>
+                <h1>Login to Food Express</h1>
+                <p>Enter your username and password to access your account and continue ordering.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+            </div>
+            <button type="button" class="btn btn-secondary" id="loginButton" onclick="login()">Login</button>
+            <p class="status-message" id="loginMessage">Enter your credentials to login.</p>
+            <p class="status-message" id="locationMessage">Allow location access so we can show nearby restaurants after login.</p>
+            
+            <div style="margin-top: 20px; text-align: center; border-top: 1px solid #ddd; padding-top: 15px;">
+                <p style="color: #666; font-size: 14px;">Don't have an account? <a href="register.html" style="color: #667eea; text-decoration: none; font-weight: bold;">Register here</a></p>
+                <p style="color: #666; font-size: 14px; margin-top: 10px;"><a href="change-password.html" style="color: #667eea; text-decoration: none; font-weight: bold;">Change Password</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Food Express — Example full-stack food delivery app.</p>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Express | Checkout</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">Food Express</div>
+      <div class="nav-group">
+        <nav class="main-nav">
+          <a href="home.html">Home</a>
+          <a href="home.html#menu">Menu</a>
+          <a href="cart.html">Cart</a>
+          <a href="account.html">Account</a>
+        </nav>
+        <div class="user-info" id="userInfo">
+          <span class="user-greeting">Hello, Guest</span>
+          <a href="login.html" class="nav-login">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="page-content">
+    <section class="cart-section">
+      <div class="section-header">
+        <span class="eyebrow">Checkout</span>
+        <h2>Enter delivery information</h2>
+      </div>
+      <div class="cart-card-1">
+        <form id="checkoutForm">
+          <label>Delivery Address</label>
+          <textarea id="address" rows="4" placeholder="Enter full address"></textarea>
+          <label>Phone Number</label>
+          <input id="phone" type="tel" placeholder="Enter phone number" />
+          <div class="cart-summary">
+            <div>
+              <p class="summary-label">Order Total</p>
+              <p id="checkoutTotal" class="summary-value">₹0</p>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Continue to Payment</button>
+          <p id="checkoutMessage" class="status-message">Review your order before proceeding.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Payment Mode Selection Modal -->
+  <div id="paymentModeModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <div class="modal-header">
+        <h2>Mode of Payment</h2>
+      </div>
+      <div class="modal-body">
+        <p style="color: #6a6a6a; margin-bottom: 20px;">Please select your preferred payment method:</p>
+        <div class="payment-options">
+          <button id="codBtn" class="payment-option-btn cod-btn">
+            <div class="payment-icon">💵</div>
+            <div class="payment-label">Cash on Delivery</div>
+            <div class="payment-desc">Pay when you receive</div>
+          </button>
+          <button id="onlineBtn" class="payment-option-btn online-btn">
+            <div class="payment-icon">💳</div>
+            <div class="payment-label">Online Payment</div>
+            <div class="payment-desc">UPI, Card, etc.</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>✓ Order Placed Successfully</h2>
+      </div>
+      <div class="modal-body">
+        <div class="success-content">
+          <div class="success-icon">✓</div>
+          <p style="font-size: 1.1rem; color: #2f2f2f; margin-bottom: 10px;">Your order has been placed successfully!</p>
+          <p style="color: #6a6a6a; margin-bottom: 20px;" id="orderSuccessMessage">Payment method: Cash on Delivery</p>
+          <p style="color: #6a6a6a; font-size: 0.9rem;">You can track your order status in your account.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="successCloseBtn" class="btn btn-primary">Go to Home</button>
+      </div>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <p>Food Express — Full checkout flow with payment.</p>
+  </footer>
+  <script src="js/common.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

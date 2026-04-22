@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Express | Admin</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">Food Express</div>
+      <div class="nav-group">
+        <nav class="main-nav">
+          <a href="home.html">Home</a>
+          <a href="home.html#menu">Menu</a>
+          <a href="admin.html">Admin</a>
+          <a href="account.html">Account</a>
+        </nav>
+        <div class="user-info" id="userInfo">
+          <span class="user-greeting">Hello, Guest</span>
+          <a href="login.html" class="nav-login">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="page-content">
+    <section class="tracking-section">
+      <div class="section-header">
+        <span class="eyebrow">Admin Panel</span>
+        <h2>Update order status manually</h2>
+      </div>
+      <div class="tracking-card">
+        <div class="tracking-input-row">
+          <label for="adminOrderId">Order ID</label>
+          <input id="adminOrderId" type="text" placeholder="Enter order ID" />
+          <label for="adminStatus">New status</label>
+          <select id="adminStatus">
+            <option value="placed">Placed</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="preparing">Preparing</option>
+            <option value="out_for_delivery">Out for Delivery</option>
+            <option value="delivered">Delivered</option>
+          </select>
+          <button class="btn btn-primary" id="updateOrder">Update Status</button>
+        </div>
+        <div id="adminMessage" class="status-message">Use an order ID to update the order status.</div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Food Express — Manual order status control panel.</p>
+  </footer>
+  <script src="js/common.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

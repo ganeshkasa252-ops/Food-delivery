@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Express | Cart</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">Food Express</div>
+      <div class="nav-group">
+        <nav class="main-nav">
+          <a href="home.html">Home</a>
+          <a href="home.html#menu">Menu</a>
+          <a href="cart.html">Cart</a>
+          <a href="account.html">Account</a>
+        </nav>
+        <div class="user-info" id="userInfo">
+          <span class="user-greeting">Hello, Guest</span>
+          <a href="login.html" class="nav-login">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="page-content">
+    <section class="cart-section">
+      <div class="section-header">
+        <span class="eyebrow">Your Bag</span>
+        <h2>Review your order</h2>
+      </div>
+      <div class="cart-card">
+        <div id="cartItems" class="food-grid"></div>
+        <div class="cart-summary">
+          <div>
+            <p class="summary-label">Total</p>
+            <p id="cartTotal" class="summary-value">₹0</p>
+          </div>
+          <a class="btn btn-primary" id="checkoutButton" href="checkout.html">Proceed to Checkout</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Food Express — food delivery website</p>
+  </footer>
+  <script src="js/common.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

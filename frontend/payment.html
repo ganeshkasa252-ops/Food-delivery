@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Express | Payment</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">Food Express</div>
+      <div class="nav-group">
+        <nav class="main-nav">
+          <a href="home.html">Home</a>
+          <a href="home.html#menu">Menu</a>
+          <a href="cart.html">Cart</a>
+          <a href="account.html">Account</a>
+        </nav>
+        <div class="user-info" id="userInfo">
+          <span class="user-greeting">Hello, Guest</span>
+          <a href="login.html" class="nav-login">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="page-content">
+    <section class="cart-section">
+      <div class="section-header">
+        <span class="eyebrow">Payment</span>
+        <h2>Complete your order</h2>
+      </div>
+      <div class="cart-card-1">
+        <div class="cart-summary" style="border-top: none; padding-top: 0; margin-top: 0;">
+          <div>
+            <p style="margin: 0 0 16px; color: #6a6a6a; font-size: 0.95rem;">Select a payment method to complete your order.</p>
+          </div>
+        </div>
+        
+        <!-- ONLINE PAYMENT SECTION -->
+        <div style="margin-bottom: 24px;">
+          <h3 style="margin-bottom: 16px; font-weight: 700; color: #2f2f2f;">💳 Online Payment</h3>
+          <div style="display: grid; gap: 12px;">
+            <label style="display: flex; align-items: center; gap: 12px; padding: 14px; border: 2px solid #ffe1ce; border-radius: 12px; cursor: pointer; transition: all 0.2s;" id="cardPaymentLabel" onmouseover="this.style.borderColor='#ff6a00'" onmouseout="this.style.borderColor='#ffe1ce'">
+              <input type="radio" name="paymentMethod" id="onlinePayment" value="online" required onchange="updatePaymentOptions()">
+              <div>
+                <strong style="color: #990808;">Card</strong>
+                <p style="margin: 4px 0 0; font-size: 0.85rem; color: #a0a0a0;">Test card: 4111111111111111 | CVV: 123</p>
+              </div>
+            </label>
+            
+            <label style="display: flex; align-items: center; gap: 12px; padding: 14px; border: 2px solid #ffe1ce; border-radius: 12px; cursor: pointer; transition: all 0.2s;" id="upiPaymentLabel" onmouseover="this.style.borderColor='#ff6a00'" onmouseout="this.style.borderColor='#ffe1ce'">
+              <input type="radio" name="paymentMethod" id="upiPayment" value="upi" required onchange="updatePaymentOptions()">
+              <div>
+                <strong style="color: #990808;">📱 UPI</strong>
+                <p style="margin: 4px 0 0; font-size: 0.85rem; color: #a0a0a0;">Test UPI: dummy@paytm</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- QR Code Section for UPI -->
+        <div id="qrCodeSection" style="display: none; margin-bottom: 24px; text-align: center;">
+          <h3 style="margin-bottom: 16px; font-weight: 700; color: #2f2f2f;">Scan QR Code for UPI Payment</h3>
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img id="upiQrCode" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23fff' width='100' height='100'/%3E%3C/svg%3E" alt="UPI QR Code" style="width: 200px; height: 200px; border: 2px solid #ffe1ce; border-radius: 8px; padding: 8px;">
+          </div>
+          <p style="margin-top: 12px; font-size: 0.85rem; color: #a0a0a0;">Scan this QR code with your UPI app to make payment</p>
+        </div>
+
+        <!-- CASH ON DELIVERY SECTION -->
+        <div style="margin-bottom: 24px;">
+          <h3 style="margin-bottom: 16px; font-weight: 700; color: #2f2f2f;">💰 Cash on Delivery</h3>
+          <div style="display: grid; gap: 12px;">
+            <label style="display: flex; align-items: center; gap: 12px; padding: 14px; border: 2px solid #ffe1ce; border-radius: 12px; cursor: pointer; transition: all 0.2s;" id="codPaymentLabel" onmouseover="this.style.borderColor='#ff6a00'" onmouseout="this.style.borderColor='#ffe1ce'">
+              <input type="radio" name="paymentMethod" id="codPayment" value="cod" required onchange="updatePaymentOptions()">
+              <div>
+                <strong style="color: #990808;">Pay When Order Arrives</strong>
+                <p style="margin: 4px 0 0; font-size: 0.85rem; color: #a0a0a0;">Keep your cash ready for our delivery partner</p>
+              </div>
+            </label>
+          </div>
+        </div>
+        
+        <button id="payNow" class="btn btn-primary">Complete Payment</button>
+        <p id="paymentMessage" class="status-message">Select a payment method to proceed.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Food Express — Razorpay payment integrated.</p>
+  </footer>
+  <script src="js/common.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/payment.js"></script>
+</body>
+</html>

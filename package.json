@@ -1,0 +1,20 @@
+{
+  "name": "food-express-fullstack-backend",
+  "version": "1.0.0",
+  "description": "Backend API for the Food Express full-stack food delivery app.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.4",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.5.0",
+    "nodemailer": "^8.0.5",
+    "razorpay": "^2.0.8"
+  }
+}

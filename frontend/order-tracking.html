@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Express | Track Order</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">Food Express</div>
+      <div class="nav-group">
+        <nav class="main-nav">
+          <a href="home.html">Home</a>
+          <a href="home.html#menu">Menu</a>
+          <a href="cart.html">Cart</a>
+          <a href="account.html">Account</a>
+        </nav>
+        <div class="user-info" id="userInfo">
+          <span class="user-greeting">Hello, Guest</span>
+          <a href="login.html" class="nav-login">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="page-content">
+    <section class="tracking-section">
+      <div class="section-header">
+        <span class="eyebrow">Order tracking</span>
+        <h2>Track your delivery in real time</h2>
+      </div>
+      <div class="tracking-card">
+        <div class="tracking-input-row">
+          <label for="trackingOrderId">Order ID</label>
+          <input id="trackingOrderId" type="text" placeholder="Enter order ID or paste from payment" />
+          <button class="btn btn-primary" id="loadOrder">Load Order</button>
+        </div>
+        <div id="trackingMessage" class="status-message">Enter your order ID to see status updates.</div>
+        <div id="orderDetails" class="order-details hidden">
+          <div class="order-summary">
+            <div><strong>Order ID</strong><p id="detailOrderId"></p></div>
+            <div><strong>Total</strong><p id="detailTotal"></p></div>
+            <div><strong>Status</strong><p id="detailStatus"></p></div>
+            <div><strong>Estimated delivery</strong><p id="detailEta"></p></div>
+          </div>
+          
+          <!-- QR Code Display Section -->
+          <div id="qrCodeDisplay" style="display: none; margin: 24px 0; text-align: center; border: 2px solid #ffe1ce; border-radius: 12px; padding: 20px;">
+            <h3 style="margin-top: 0; margin-bottom: 16px; font-weight: 700; color: #2f2f2f;">Payment QR Code</h3>
+            <div style="display: flex; justify-content: center; align-items: center;">
+              <img id="displayQrCode" src="" alt="Payment QR Code" style="width: 200px; height: 200px; border: 1px solid #ddd; border-radius: 8px;">
+            </div>
+            <p id="qrDescription" style="margin-top: 12px; font-size: 0.9rem; color: #666;"></p>
+          </div>
+          
+          <div class="tracking-steps" id="trackingSteps"></div>
+          <div class="item-list" id="orderItems"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Food Express — Keep an eye on your delivery progress.</p>
+  </footer>
+  <script src="js/common.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/order-tracking.js"></script>
+</body>
+</html>

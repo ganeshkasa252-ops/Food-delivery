@@ -1,0 +1,59 @@
+[
+  {
+    "type": "CONTACT_MESSAGE",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phone": "+1-234-567-8900",
+    "message": "I would like to order pizza with extra cheese",
+    "status": "RECEIVED",
+    "timestamp": "04/22/2026, 03:28:54 PM",
+    "id": "msg_1776851934732"
+  },
+  {
+    "type": "CONTACT_MESSAGE",
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "phone": "+1-987-654-3210",
+    "message": "Great service! Can I get early morning delivery?",
+    "status": "RECEIVED",
+    "timestamp": "04/22/2026, 03:28:54 PM",
+    "id": "msg_1776851934735"
+  },
+  {
+    "type": "CONTACT_MESSAGE",
+    "name": "Mike Johnson",
+    "email": "mike@example.com",
+    "phone": "+1-555-123-4567",
+    "message": "Issue with my last order. Order ID: 12345",
+    "status": "RECEIVED",
+    "timestamp": "04/22/2026, 03:28:54 PM",
+    "id": "msg_1776851934738"
+  },
+  {
+    "type": "ORDER_MESSAGE",
+    "orderId": "ORD-2026-001",
+    "customerId": "CUST-123",
+    "status": "PENDING",
+    "details": "Pizza and sides - Total: $25.99",
+    "timestamp": "04/22/2026, 03:28:54 PM",
+    "id": "msg_1776851934745"
+  },
+  {
+    "type": "REVIEW_MESSAGE",
+    "reviewId": "REV-001",
+    "userId": "USER-456",
+    "rating": 5,
+    "comment": "Excellent food quality and fast delivery!",
+    "timestamp": "04/22/2026, 03:28:54 PM",
+    "id": "msg_1776851934748"
+  },
+  {
+    "type": "COMPLAINT",
+    "username": "Tom Brown",
+    "category": "LATE_DELIVERY",
+    "severity": "HIGH",
+    "description": "Order arrived 45 minutes late",
+    "timestamp": "04/22/2026, 03:28:54 PM",
+    "id": "msg_1776851934753"
+  }
+]

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Express | Home</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand"> Food Express</div>
+            <div class="nav-group">
+                <nav class="main-nav">
+                    <a href="home.html">Home</a>
+                    <a href="#menu">Menu</a>
+                    <a href="cart.html">Cart</a>
+                    <a href="account.html">Account</a>
+                </nav>
+                <div class="user-info" id="userInfo">
+                    <span class="user-greeting">Hello, Guest</span>
+                    <a href="login.html" class="nav-login">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <span class="eyebrow">Fresh meals near you</span>
+                    <h1 id="heroTitle">Sign in to explore local restaurants and tasty dishes.</h1>
+                    <p id="heroText">Enter your city, district or state to discover nearby restaurants, delivery time estimates and popular districts across India.</p>
+                    <div class="hero-actions">
+                        <a id="heroPrimaryBtn" href="login.html" class="btn btn-primary">Sign In</a>
+                  
+                    </div> 
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-details">
+                        <h2>Start with one click</h2>
+                        <p id="heroCardText">Order now to reserve your favorite meals for tiffins, lunch, dinner, and desserts.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="location-section">
+            <div class="container location-card">
+                <div class="location-card-row">
+                    <div>
+                        <h2>Enter your location</h2>
+                        <p>Type your city or address to discover nearby restaurants within 10 km.</p>
+                    </div>
+                    <div class="location-actions">
+                        <input id="cityInput" list="citySuggestions" type="text" placeholder="City, district, or state" aria-label="Enter your location">
+                        <datalist id="citySuggestions"></datalist>
+                        <button class="btn btn-primary" type="button" onclick="setManualLocation()">Set Location</button>
+                        <button class="btn btn-secondary" type="button" onclick="requestUserLocation()">Use my location</button>
+                    </div>
+                </div>
+                <p id="locationNote" class="location-info">Allow location access or enter your location to see nearby restaurants and estimated delivery times.</p>
+            </div>
+        </section>
+
+        <section id="featured" class="featured-section">
+            <div class="container section-header">
+                <span class="eyebrow">Popular food categories</span>
+                <h2>Find dishes like burgers, idly, rice and more</h2>
+            </div>
+            <div class="container featured-grid">
+                <article class="featured-card">
+                    <h3>Burgers</h3>
+                    <p>Cheesy, spicy, grilled and loaded burger combos to satisfy cravings.</p>
+                </article>
+                <article class="featured-card">
+                    <h3>Idly & Dosa</h3>
+                    <p>Soft idlies, crispy dosas and South Indian combos with chutney and sambar.</p>
+                </article>
+                <article class="featured-card">
+                    <h3>Rice & Biryani</h3>
+                    <p>Fragrant biryanis, pulao, fried rice and hearty rice plates.</p>
+                </article>
+                <article class="featured-card">
+                    <h3>Desserts</h3>
+                    <p>Sweet treats, cake, pastries and dessert bowls for every meal.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="nearby" class="nearby-section">
+            <div class="container section-header">
+                <span class="eyebrow">Nearby Restaurants</span>
+                <h2>Restaurants close to you</h2>
+                <p id="nearbyStatus" class="nearby-status">Allow location access to show nearby restaurants and estimated delivery time.</p>
+            </div>
+            <div class="container restaurant-grid" id="restaurantList">
+                <p class="cart-empty">Finding nearby restaurants...</p>
+            </div>
+        </section>
+
+        <section class="search-section">
+            <div class="container search-wrap">
+                <input id="foodSearch" type="search" placeholder="Search for food items, pizza, biryani, desserts...">
+                <button type="button" class="btn btn-primary" id="searchButton">Search</button>
+            </div>
+        </section>
+
+        <section id="categories" class="categories-section">
+            <div class="container categories-wrap">
+                <button class="category-btn active" onclick="filterCategory('All', this)">All</button>
+                <button class="category-btn" onclick="filterCategory('Tiffins', this)">Tiffins</button>
+                <button class="category-btn" onclick="filterCategory('Lunch', this)">Lunch</button>
+                <button class="category-btn" onclick="filterCategory('Dinner', this)">Dinner</button>
+                <button class="category-btn" onclick="filterCategory('Desserts', this)">Desserts</button>
+            </div>
+        </section>
+
+        <section id="menu" class="food-section">
+            <div class="container section-header">
+                <span class="eyebrow">Menu</span>
+                <h2>Browse food for tiffins, lunch, dinner and desserts</h2>
+            </div>
+            <div class="food-grid" id="foodGrid">
+                <p class="status-message">Loading menu...</p>
+            </div>
+        </section>
+
+        <section id="reviews" class="reviews-section">
+            <div class="container section-header">
+                <span class="eyebrow">Customer Reviews</span>
+                <h2>What our customers are saying</h2>
+            </div>
+            
+            <div class="container reviews-content">
+                <div class="reviews-list-container">
+                    <div id="reviewsList" class="reviews-list">
+                        <p class="status-message">Loading reviews...</p>
+                    </div>
+                </div>
+
+                <div class="review-form-container">
+                    <h3>Share Your Review</h3>
+                    <form id="reviewForm" class="review-form">
+                        <div class="form-group">
+                            <label for="reviewName">Your Name *</label>
+                            <input type="text" id="reviewName" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reviewEmail">Your Email *</label>
+                            <input type="email" id="reviewEmail" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reviewRating">Rating *</label>
+                            <div class="rating-input">
+                                <select id="reviewRating" required>
+                                    <option value="">Select rating</option>
+                                    <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                                    <option value="4">⭐⭐⭐⭐ Good</option>
+                                    <option value="3">⭐⭐⭐ Average</option>
+                                    <option value="2">⭐⭐ Poor</option>
+                                    <option value="1">⭐ Very Poor</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reviewComment">Your Review *</label>
+                            <textarea id="reviewComment" placeholder="Share your experience..." rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary review-submit-btn">Submit Review</button>
+                        <p id="reviewMessage" class="review-message"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container section-header">
+                <span class="eyebrow">Get in Touch</span>
+                <h2>Connect with us</h2>
+            </div>
+            
+            <div class="container contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <h4>Call Us</h4>
+                        <p>+91 9876543210</p>
+                        <p class="contact-time">Mon - Sun, 9 AM - 10 PM</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <h4>Email Us</h4>
+                        <p>support@foodexpress.com</p>
+                        <p class="contact-time">We'll respond within 24 hours</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <h4>Visit Us</h4>
+                        <p>123 Food Street, Bangalore</p>
+                        <p class="contact-time">Karnataka 560001, India</p>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <h3>Send us a Message</h3>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="contactName" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="contactEmail" placeholder="Your Email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" id="contactPhone" placeholder="Your Phone (Optional)">
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="contactMessageText" placeholder="Your Message..." rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary contact-submit-btn">Send Message</button>
+                        <p id="contactMessageOutput" class="contact-message"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Food Express — food delivery website.</p>
+    </footer>
+    <script src="data/locations.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/review.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
